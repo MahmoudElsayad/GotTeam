@@ -68,44 +68,46 @@ export default class Notifications extends Component {
     componentDidMount() {
 
         var name = JSON.stringify(this.props.navigation.getParam('teamName')).replace(/['"]+/g, '');
+        var user = firebase.auth().currentUser;
 
-        firebase.firestore().collection("teams").doc(name).get()
+        firebase.firestore().collection('users').doc(user.uid)
+            .get()
             .then((doc) => {
-                console.log(doc.data().notifications);
-                
-                if (doc.data().notifications) {
-                    this.setState({
-                        eventReminderMobile: doc.data().notifications.eventReminderMobile,
-                        eventChangesMobile: doc.data().notifications.eventChangesMobile,
-                        carpoolSignupMobile: doc.data().notifications.carpoolSignupMobile,
-                        liveCoverageMobile: doc.data().notifications.liveCoverageMobile,
-                        gameRemindersMobile: doc.data().notifications.gameRemindersMobile,
-                        gameChangesMobile: doc.data().notifications.gameChangesMobile,
-                        gameScoreAddedMobile: doc.data().notifications.gameScoreAddedMobile,
-                        photoVideoMobile: doc.data().notifications.photoVideoMobile,
-                        teamSurveysMobile: doc.data().notifications.teamSurveysMobile,
-                        teamMessageMobile: doc.data().notifications.teamMessageMobile,
-                        memberMessageMobile: doc.data().notifications.memberMessageMobile,
-                        eventReminderEmail: doc.data().notifications.eventReminderEmail,
-                        eventChangesEmail: doc.data().notifications.eventChangesEmail,
-                        carpoolSignupEmail: doc.data().notifications.carpoolSignupEmail,
-                        liveCoverageEmail: doc.data().notifications.liveCoverageEmail,
-                        gameRemindersEmail: doc.data().notifications.gameRemindersEmail,
-                        gameChangesEmail: doc.data().notifications.gameChangesEmail,
-                        gameScoreAddedEmail: doc.data().notifications.gameScoreAddedEmail,
-                        photoVideoEmail: doc.data().notifications.photoVideoEmail,
-                        teamSurveysEmail: doc.data().notifications.teamSurveysEmail,
-                        teamMessageEmail: doc.data().notifications.teamMessageEmail,
-                        memberMessageEmail: doc.data().notifications.memberMessageEmail,
-                        reminderTime: doc.data().notifications.reminderTime
-                    })
+
+                if (doc.data().notifications && doc.data().notifications.length > 0){
+                    let obj = doc.data().notifications.find(o => o.teamName === name);
+                    console.log(obj);
+                    console.log(doc.data());
+
+                    if (obj != undefined) {
+                        this.setState({
+                            eventReminderMobile: obj.eventReminderMobile,
+                            eventChangesMobile: obj.eventChangesMobile,
+                            carpoolSignupMobile: obj.carpoolSignupMobile,
+                            liveCoverageMobile: obj.liveCoverageMobile,
+                            gameRemindersMobile: obj.gameRemindersMobile,
+                            gameChangesMobile: obj.gameChangesMobile,
+                            gameScoreAddedMobile: obj.gameScoreAddedMobile,
+                            photoVideoMobile: obj.photoVideoMobile,
+                            teamSurveysMobile: obj.teamSurveysMobile,
+                            teamMessageMobile: obj.teamMessageMobile,
+                            memberMessageMobile: obj.memberMessageMobile,
+                            eventReminderEmail: obj.eventReminderEmail,
+                            eventChangesEmail: obj.eventChangesEmail,
+                            carpoolSignupEmail: obj.carpoolSignupEmail,
+                            liveCoverageEmail: obj.liveCoverageEmail,
+                            gameRemindersEmail: obj.gameRemindersEmail,
+                            gameChangesEmail: obj.gameChangesEmail,
+                            gameScoreAddedEmail: obj.gameScoreAddedEmail,
+                            photoVideoEmail: obj.photoVideoEmail,
+                            teamSurveysEmail: obj.teamSurveysEmail,
+                            teamMessageEmail: obj.teamMessageEmail,
+                            memberMessageEmail: obj.memberMessageEmail,
+                            reminderTime: obj.reminderTime
+                        })   
+                    }        
                 }
-
                 this.setState({ loading: false });
-
-            }).catch((error) => {
-                console.log(error);
-                
             })
 
     }
@@ -115,42 +117,73 @@ export default class Notifications extends Component {
         this.loader();
 
         var name = JSON.stringify(this.props.navigation.getParam('teamName')).replace(/['"]+/g, '');
+        var user = firebase.auth().currentUser;
 
-        firebase.firestore().collection("teams").doc(name)
-            .update({
-                'notifications.eventReminderMobile' : this.state.eventReminderMobile,
-                'notifications.eventChangesMobile' : this.state.eventChangesMobile,
-                'notifications.carpoolSignupMobile' : this.state.carpoolSignupMobile,
-                'notifications.liveCoverageMobile' : this.state.liveCoverageMobile,
-                'notifications.gameRemindersMobile' : this.state.gameRemindersMobile,
-                'notifications.gameChangesMobile' : this.state.gameChangesMobile,
-                'notifications.gameScoreAddedMobile' : this.state.gameScoreAddedMobile,
-                'notifications.photoVideoMobile' : this.state.photoVideoMobile,
-                'notifications.teamSurveysMobile' : this.state.teamSurveysMobile,
-                'notifications.teamMessageMobile' : this.state.teamMessageMobile,
-                'notifications.memberMessageMobile' : this.state.memberMessageMobile,
-                'notifications.eventReminderEmail' : this.state.eventReminderEmail,
-                'notifications.eventChangesEmail' : this.state.eventChangesEmail,
-                'notifications.carpoolSignupEmail' : this.state.carpoolSignupEmail,
-                'notifications.liveCoverageEmail' : this.state.liveCoverageEmail,
-                'notifications.gameRemindersEmail' : this.state.gameRemindersEmail,
-                'notifications.gameChangesEmail' : this.state.gameChangesEmail,
-                'notifications.gameScoreAddedEmail' : this.state.gameScoreAddedEmail,
-                'notifications.photoVideoEmail' : this.state.photoVideoEmail,
-                'notifications.teamSurveysEmail' : this.state.teamSurveysEmail,
-                'notifications.teamMessageEmail' : this.state.teamMessageEmail,
-                'notifications.memberMessageEmail' : this.state.memberMessageEmail,
-                'notifications.reminderTime': this.state.reminderTime,
-            }).then(()=> {
+        firebase.firestore().collection('users').doc(user.uid)
+        .update({
+            notifications: firebase.firestore.FieldValue.arrayUnion({
+                    teamName: name,
+                    eventReminderMobile: this.state.eventReminderMobile,
+                    eventChangesMobile: this.state.eventChangesMobile,
+                    carpoolSignupMobile: this.state.carpoolSignupMobile,
+                    liveCoverageMobile: this.state.liveCoverageMobile,
+                    gameRemindersMobile: this.state.gameRemindersMobile,
+                    gameChangesMobile: this.state.gameChangesMobile,
+                    gameScoreAddedMobile: this.state.gameScoreAddedMobile,
+                    photoVideoMobile: this.state.photoVideoMobile,
+                    teamSurveysMobile: this.state.teamSurveysMobile,
+                    teamMessageMobile: this.state.teamMessageMobile,
+                    memberMessageMobile: this.state.memberMessageMobile,
+                    eventReminderEmail: this.state.eventReminderEmail,
+                    eventChangesEmail: this.state.eventChangesEmail,
+                    carpoolSignupEmail: this.state.carpoolSignupEmail,
+                    liveCoverageEmail: this.state.liveCoverageEmail,
+                    gameRemindersEmail: this.state.gameRemindersEmail,
+                    gameChangesEmail: this.state.gameChangesEmail,
+                    gameScoreAddedEmail: this.state.gameScoreAddedEmail,
+                    photoVideoEmail: this.state.photoVideoEmail,
+                    teamSurveysEmail: this.state.teamSurveysEmail,
+                    teamMessageEmail: this.state.teamMessageEmail,
+                    memberMessageEmail: this.state.memberMessageEmail,
+                    reminderTime: this.state.reminderTime,
+            })
+        })
+            .then(() => {
                 this.props.navigation.dispatch(StackActions.pop({
                     n: 5,
                 }));
             }).catch((error) => {
                 console.log(error);
-                
+
             })
 
-    }
+        // firebase.firestore().collection("teams").doc(name)
+        //     .update({
+        //         'notifications.eventReminderMobile' : this.state.eventReminderMobile,
+        //         'notifications.eventChangesMobile' : this.state.eventChangesMobile,
+        //         'notifications.carpoolSignupMobile' : this.state.carpoolSignupMobile,
+        //         'notifications.liveCoverageMobile' : this.state.liveCoverageMobile,
+        //         'notifications.gameRemindersMobile' : this.state.gameRemindersMobile,
+        //         'notifications.gameChangesMobile' : this.state.gameChangesMobile,
+        //         'notifications.gameScoreAddedMobile' : this.state.gameScoreAddedMobile,
+        //         'notifications.photoVideoMobile' : this.state.photoVideoMobile,
+        //         'notifications.teamSurveysMobile' : this.state.teamSurveysMobile,
+        //         'notifications.teamMessageMobile' : this.state.teamMessageMobile,
+        //         'notifications.memberMessageMobile' : this.state.memberMessageMobile,
+        //         'notifications.eventReminderEmail' : this.state.eventReminderEmail,
+        //         'notifications.eventChangesEmail' : this.state.eventChangesEmail,
+        //         'notifications.carpoolSignupEmail' : this.state.carpoolSignupEmail,
+        //         'notifications.liveCoverageEmail' : this.state.liveCoverageEmail,
+        //         'notifications.gameRemindersEmail' : this.state.gameRemindersEmail,
+        //         'notifications.gameChangesEmail' : this.state.gameChangesEmail,
+        //         'notifications.gameScoreAddedEmail' : this.state.gameScoreAddedEmail,
+        //         'notifications.photoVideoEmail' : this.state.photoVideoEmail,
+        //         'notifications.teamSurveysEmail' : this.state.teamSurveysEmail,
+        //         'notifications.teamMessageEmail' : this.state.teamMessageEmail,
+        //         'notifications.memberMessageEmail' : this.state.memberMessageEmail,
+        //         'notifications.reminderTime': this.state.reminderTime,
+        //     })
+};
 
     _showStartDatePicker = () => this.setState({ isStartDatePickerVisible: true });
 

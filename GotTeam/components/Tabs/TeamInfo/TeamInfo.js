@@ -9,6 +9,8 @@ import LinearGradient from 'react-native-linear-gradient';
 import { NavigationBar, Title, Image, TextInput, View, Row, Text, Subtitle, Divider, Caption, ListView } from '@shoutem/ui';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import renderIf from './../../renderIf';
+import { BackHandler } from 'react-native';
+
 
 var JOIN = ['Join Team', 'Cancel'];
 
@@ -36,6 +38,25 @@ export default class TeamInfo extends Component {
         this.inTeam();
         console.log(this.state.loadingMembers);
         
+    }
+
+    componentDidMount() {
+        this.backHandler = BackHandler.addEventListener('hardwareBackPress', () => {
+            this.goBack(); // works best when the goBack is async
+            return true;
+        });
+    }
+
+    componentWillUnmount() {
+        this.backHandler.remove();
+    }
+
+    goBack = () => {
+        console.log('called');
+
+        this.props.navigation.dispatch(StackActions.pop({
+            n: 1,
+        }));
     }
 
     fetchTeam = (teamName) => {

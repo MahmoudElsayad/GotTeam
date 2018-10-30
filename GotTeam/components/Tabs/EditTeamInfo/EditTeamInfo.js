@@ -232,6 +232,7 @@ export default class EditTeamInfo extends Component {
                                                     <Input
                                                         placeholder={"Rename your team ..."}
                                                         onChangeText={(teamName) => this.setState({ teamName })}
+                                                        style={{ width: '80%' }}
                                                     />
                                                 </Item>
                                             </Form>

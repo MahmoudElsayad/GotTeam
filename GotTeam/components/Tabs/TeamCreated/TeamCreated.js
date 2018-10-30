@@ -51,7 +51,11 @@ export default class TeamCreated extends Component {
                         //     },
                         // }}
                         rightComponent={
-                            <TouchableHighlight style={{ marginRight: '13%' }} onPress={this.createTeam}>
+                            <TouchableHighlight style={{ marginRight: '13%' }} onPress={() => {
+                                this.props.navigation.dispatch(StackActions.pop({
+                                    n: 3,
+                                }));
+                            }}>
                                 <Subtitle>
                                     Next
                         </Subtitle>
@@ -99,7 +103,9 @@ export default class TeamCreated extends Component {
                             </List>
 
                             <Button onPress={() => {
-                                this.props.navigation.navigate('TeamInfo', { teamName: JSON.stringify(this.props.navigation.getParam('teamName')), teamCode: 'ADASFA' })
+                                this.props.navigation.dispatch(StackActions.pop({
+                                    n: 3,
+                                }));
                             }} style={{ marginTop: '3%', width: '80%', justifyContent: 'center', alignSelf: 'center', alignContent: 'center', backgroundColor:'#19CFA0'}}> 
                                 <Text style={{fontSize:20, color:'#fff'}}>Next</Text>
                             </Button>

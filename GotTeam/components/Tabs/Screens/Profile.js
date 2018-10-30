@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { StyleSheet, TouchableHighlight, Image } from 'react-native';
-import { NavigationBar, Title, Switch, TextInput, View, Row, Subtitle, Divider, Caption } from '@shoutem/ui';
+import { StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { NavigationBar, Title, Switch, TextInput, View, Row, Subtitle, Divider, Caption} from '@shoutem/ui';
 import Spinner from 'react-native-spinkit';
 import { Button, Text, ActionSheet } from 'native-base';
 import LinearGradient from 'react-native-linear-gradient';
@@ -91,7 +91,7 @@ class Profile extends Component {
                     // }}
                     centerComponent={<Title style={{ fontSize: 20, paddingTop: 3, }}>Profile</Title>}
                     rightComponent={
-                            <TouchableHighlight
+                            <TouchableOpacity
                                 onPress={() =>
                                     ActionSheet.show(
                                         {
@@ -107,7 +107,7 @@ class Profile extends Component {
                                 <View style={{ marginRight: '18%', marginTop:'2%' }}>
                                     <Icon name="bars" size={30} color="#fff" />
                                 </View>
-                            </TouchableHighlight>
+                        </TouchableOpacity>
                         }
                 />
                 </LinearGradient>

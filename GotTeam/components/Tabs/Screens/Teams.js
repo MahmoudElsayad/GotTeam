@@ -278,10 +278,11 @@ class Teams extends Component {
                             style={styles.contentContainer}
                             onRefresh={this._Refresh}
                         >
-                            <Divider styleName="section-header" style={{height:'8%', paddingTop:'-1%'}}>
+                            <Divider styleName="section-header" style={{height:'6%', paddingTop:'-1%'}}>
                                 <Text style={{padding:'2%'}}>Your Teams</Text>
                             </Divider>
-                        <List containerStyle={{ marginTop: '-1%',borderTopWidth: 0, borderBottomWidth: 0 }}>
+                        <ScrollView>
+                        <List containerStyle={{ marginTop: '-1%',borderTopWidth: 0, borderBottomWidth: 0, height:'100%' }}>
                             <FlatList
                                 data={this.state.data}
                                 keyExtractor={(item, index) => item.key}
@@ -315,6 +316,7 @@ class Teams extends Component {
                                 ListFooterComponent={this.renderFooter}
                                 />
                         </List>
+                            </ScrollView>
                         </PTRView>
                 )}
 
@@ -359,7 +361,7 @@ const styles = {
         marginBottom: 50
     },
     contentContainer: {
-        marginTop: '-4%',
+        marginTop: '-3%',
         height:'100%',
         backgroundColor: '#fff'
     },

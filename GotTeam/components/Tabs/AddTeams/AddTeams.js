@@ -10,6 +10,8 @@ import 'firebase/firestore';
 import { List, ListItem, SearchBar } from "react-native-elements";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import renderIf from '../../renderIf';
+import { BackHandler } from 'react-native';
+
 
 let { width, height } = Dimensions.get('window');
 const ASPECT_RATIO = width / height;
@@ -36,6 +38,25 @@ export default class AddTeams extends Component {
             .catch(function (error) {
                 console.log("Error getting documents: ", error);
             });
+    }
+
+    componentDidMount() {
+        this.backHandler = BackHandler.addEventListener('hardwareBackPress', () => {
+            this.goBack(); // works best when the goBack is async
+            return true;
+        });
+    }
+
+    componentWillUnmount() {
+        this.backHandler.remove();
+    }
+
+    goBack= () => {
+        console.log('called');
+        
+        this.props.navigation.dispatch(StackActions.pop({
+            n: 1,
+        }));
     }
 
     setTeams = (e) => {
