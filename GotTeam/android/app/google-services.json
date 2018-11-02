@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "751375878608",
+    "firebase_url": "https://got-team.firebaseio.com",
+    "project_id": "got-team",
+    "storage_bucket": "got-team.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:751375878608:android:41ad6a8cc1ebed48",
+        "android_client_info": {
+          "package_name": "com.gotteam"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "751375878608-6mog7v29depckmj6jkflqhr8rmscoirm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gotteam",
+            "certificate_hash": "7ee8d13b1d06014155bb5b156609650565bbdc86"
+          }
+        },
+        {
+          "client_id": "751375878608-cjl0on62g8ds8n9lgg5rdi54jjfs1dff.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxzOZhxiDGRbJXTuFiWMgZOUg13pSrUbk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "751375878608-cjl0on62g8ds8n9lgg5rdi54jjfs1dff.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

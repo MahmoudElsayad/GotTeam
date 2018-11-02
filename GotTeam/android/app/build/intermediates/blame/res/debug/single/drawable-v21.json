@@ -6,5 +6,13 @@
     {
         "merged": "F:\\Projects\\react-native\\GotTeam\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\abc_btn_colored_material.xml",
         "source": "C:\\Users\\MAHMOUD\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-23.0.1.aar\\b8e69cdcc08a516d4c9e190d690c7bc6\\res\\drawable-v21\\abc_btn_colored_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\MAHMOUD\\Documents\\GitHub\\GotTeam\\GotTeam\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\abc_action_bar_item_background_material.xml",
+        "source": "C:\\Users\\MAHMOUD\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-23.0.1.aar\\b8e69cdcc08a516d4c9e190d690c7bc6\\res\\drawable-v21\\abc_action_bar_item_background_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\MAHMOUD\\Documents\\GitHub\\GotTeam\\GotTeam\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\abc_btn_colored_material.xml",
+        "source": "C:\\Users\\MAHMOUD\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-23.0.1.aar\\b8e69cdcc08a516d4c9e190d690c7bc6\\res\\drawable-v21\\abc_btn_colored_material.xml"
     }
 ]
