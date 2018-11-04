@@ -87,6 +87,50 @@
                     }
                 }
             ]
+        },
+        {
+            "outputFile": "C:\\Users\\MAHMOUD\\Documents\\GitHub\\GotTeam\\GotTeam\\GotTeam\\android\\app\\build\\intermediates\\res\\merged\\debug\\values-w480dp-v13\\values-w480dp-v13.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\MAHMOUD\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-23.0.1.aar\\698804caa128a4c490a6026f3e9c6852\\res\\values-w480dp\\values-w480dp.xml",
+                    "from": {
+                        "startLines": "4,7",
+                        "startColumns": "4,4",
+                        "startOffsets": "282,572",
+                        "endColumns": "61,71",
+                        "endOffsets": "339,639"
+                    },
+                    "to": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,117",
+                        "endColumns": "61,71",
+                        "endOffsets": "112,184"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "C:\\Users\\MAHMOUD\\Documents\\GitHub\\GotTeam\\GotTeam\\GotTeam\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-w480dp-v13\\values-w480dp-v13.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\MAHMOUD\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-23.0.1.aar\\698804caa128a4c490a6026f3e9c6852\\res\\values-w480dp\\values-w480dp.xml",
+                    "from": {
+                        "startLines": "4,7",
+                        "startColumns": "4,4",
+                        "startOffsets": "282,572",
+                        "endColumns": "61,71",
+                        "endOffsets": "339,639"
+                    },
+                    "to": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,117",
+                        "endColumns": "61,71",
+                        "endOffsets": "112,184"
+                    }
+                }
+            ]
         }
     ]
 }

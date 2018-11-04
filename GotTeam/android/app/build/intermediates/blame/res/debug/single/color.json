@@ -1,5 +1,69 @@
 [
     {
+        "merged": "C:\\Users\\MAHMOUD\\Documents\\GitHub\\GotTeam\\GotTeam\\GotTeam\\android\\app\\build\\intermediates\\res\\merged\\debug\\color\\common_google_signin_btn_text_light.xml",
+        "source": "C:\\Users\\MAHMOUD\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-10.0.1.aar\\e5d7e33648dddded76cd26ee4dd26e8c\\res\\color\\common_google_signin_btn_text_light.xml"
+    },
+    {
+        "merged": "C:\\Users\\MAHMOUD\\Documents\\GitHub\\GotTeam\\GotTeam\\GotTeam\\android\\app\\build\\intermediates\\res\\merged\\debug\\color\\common_google_signin_btn_text_dark.xml",
+        "source": "C:\\Users\\MAHMOUD\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-10.0.1.aar\\e5d7e33648dddded76cd26ee4dd26e8c\\res\\color\\common_google_signin_btn_text_dark.xml"
+    },
+    {
+        "merged": "F:\\Projects\\react-native\\GotTeam\\android\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_material_dark.xml",
+        "source": "C:\\Users\\MAHMOUD\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-23.0.1.aar\\b8e69cdcc08a516d4c9e190d690c7bc6\\res\\color\\abc_primary_text_material_dark.xml"
+    },
+    {
+        "merged": "F:\\Projects\\react-native\\GotTeam\\android\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_search_url_text.xml",
+        "source": "C:\\Users\\MAHMOUD\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-23.0.1.aar\\b8e69cdcc08a516d4c9e190d690c7bc6\\res\\color\\abc_search_url_text.xml"
+    },
+    {
+        "merged": "C:\\Users\\MAHMOUD\\Documents\\GitHub\\GotTeam\\GotTeam\\GotTeam\\android\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_secondary_text_material_dark.xml",
+        "source": "C:\\Users\\MAHMOUD\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-23.0.1.aar\\698804caa128a4c490a6026f3e9c6852\\res\\color\\abc_secondary_text_material_dark.xml"
+    },
+    {
+        "merged": "C:\\Users\\MAHMOUD\\Documents\\GitHub\\GotTeam\\GotTeam\\android\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_material_dark.xml",
+        "source": "C:\\Users\\MAHMOUD\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-23.0.1.aar\\b8e69cdcc08a516d4c9e190d690c7bc6\\res\\color\\abc_primary_text_material_dark.xml"
+    },
+    {
+        "merged": "C:\\Users\\MAHMOUD\\Documents\\GitHub\\GotTeam\\GotTeam\\android\\app\\build\\intermediates\\res\\merged\\debug\\color\\common_google_signin_btn_text_dark.xml",
+        "source": "C:\\Users\\MAHMOUD\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-10.0.1.aar\\402a680017c93a64a4c3e8e02218c442\\res\\color\\common_google_signin_btn_text_dark.xml"
+    },
+    {
+        "merged": "C:\\Users\\MAHMOUD\\Documents\\GitHub\\GotTeam\\GotTeam\\android\\app\\build\\intermediates\\res\\merged\\debug\\color\\switch_thumb_material_light.xml",
+        "source": "C:\\Users\\MAHMOUD\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-23.0.1.aar\\b8e69cdcc08a516d4c9e190d690c7bc6\\res\\color\\switch_thumb_material_light.xml"
+    },
+    {
+        "merged": "C:\\Users\\MAHMOUD\\Documents\\GitHub\\GotTeam\\GotTeam\\GotTeam\\android\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_search_url_text.xml",
+        "source": "C:\\Users\\MAHMOUD\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-23.0.1.aar\\698804caa128a4c490a6026f3e9c6852\\res\\color\\abc_search_url_text.xml"
+    },
+    {
+        "merged": "C:\\Users\\MAHMOUD\\Documents\\GitHub\\GotTeam\\GotTeam\\android\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_secondary_text_material_light.xml",
+        "source": "C:\\Users\\MAHMOUD\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-23.0.1.aar\\b8e69cdcc08a516d4c9e190d690c7bc6\\res\\color\\abc_secondary_text_material_light.xml"
+    },
+    {
+        "merged": "F:\\Projects\\react-native\\GotTeam\\android\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_material_light.xml",
+        "source": "C:\\Users\\MAHMOUD\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-23.0.1.aar\\b8e69cdcc08a516d4c9e190d690c7bc6\\res\\color\\abc_primary_text_material_light.xml"
+    },
+    {
+        "merged": "C:\\Users\\MAHMOUD\\Documents\\GitHub\\GotTeam\\GotTeam\\GotTeam\\android\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_disable_only_material_dark.xml",
+        "source": "C:\\Users\\MAHMOUD\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-23.0.1.aar\\698804caa128a4c490a6026f3e9c6852\\res\\color\\abc_primary_text_disable_only_material_dark.xml"
+    },
+    {
+        "merged": "F:\\Projects\\react-native\\GotTeam\\android\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_secondary_text_material_light.xml",
+        "source": "C:\\Users\\MAHMOUD\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-23.0.1.aar\\b8e69cdcc08a516d4c9e190d690c7bc6\\res\\color\\abc_secondary_text_material_light.xml"
+    },
+    {
+        "merged": "C:\\Users\\MAHMOUD\\Documents\\GitHub\\GotTeam\\GotTeam\\GotTeam\\android\\app\\build\\intermediates\\res\\merged\\debug\\color\\switch_thumb_material_light.xml",
+        "source": "C:\\Users\\MAHMOUD\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-23.0.1.aar\\698804caa128a4c490a6026f3e9c6852\\res\\color\\switch_thumb_material_light.xml"
+    },
+    {
+        "merged": "F:\\Projects\\react-native\\GotTeam\\android\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_secondary_text_material_dark.xml",
+        "source": "C:\\Users\\MAHMOUD\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-23.0.1.aar\\b8e69cdcc08a516d4c9e190d690c7bc6\\res\\color\\abc_secondary_text_material_dark.xml"
+    },
+    {
+        "merged": "C:\\Users\\MAHMOUD\\Documents\\GitHub\\GotTeam\\GotTeam\\android\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_material_light.xml",
+        "source": "C:\\Users\\MAHMOUD\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-23.0.1.aar\\b8e69cdcc08a516d4c9e190d690c7bc6\\res\\color\\abc_primary_text_material_light.xml"
+    },
+    {
         "merged": "F:\\Projects\\react-native\\GotTeam\\android\\app\\build\\intermediates\\res\\merged\\debug\\color\\common_google_signin_btn_text_dark.xml",
         "source": "C:\\Users\\MAHMOUD\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-10.0.1.aar\\402a680017c93a64a4c3e8e02218c442\\res\\color\\common_google_signin_btn_text_dark.xml"
     },
@@ -20,32 +84,20 @@
         "source": "C:\\Users\\MAHMOUD\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-23.0.1.aar\\b8e69cdcc08a516d4c9e190d690c7bc6\\res\\color\\abc_primary_text_disable_only_material_dark.xml"
     },
     {
-        "merged": "F:\\Projects\\react-native\\GotTeam\\android\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_material_dark.xml",
-        "source": "C:\\Users\\MAHMOUD\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-23.0.1.aar\\b8e69cdcc08a516d4c9e190d690c7bc6\\res\\color\\abc_primary_text_material_dark.xml"
-    },
-    {
-        "merged": "F:\\Projects\\react-native\\GotTeam\\android\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_search_url_text.xml",
-        "source": "C:\\Users\\MAHMOUD\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-23.0.1.aar\\b8e69cdcc08a516d4c9e190d690c7bc6\\res\\color\\abc_search_url_text.xml"
-    },
-    {
-        "merged": "C:\\Users\\MAHMOUD\\Documents\\GitHub\\GotTeam\\GotTeam\\android\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_material_dark.xml",
-        "source": "C:\\Users\\MAHMOUD\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-23.0.1.aar\\b8e69cdcc08a516d4c9e190d690c7bc6\\res\\color\\abc_primary_text_material_dark.xml"
-    },
-    {
-        "merged": "C:\\Users\\MAHMOUD\\Documents\\GitHub\\GotTeam\\GotTeam\\android\\app\\build\\intermediates\\res\\merged\\debug\\color\\common_google_signin_btn_text_dark.xml",
-        "source": "C:\\Users\\MAHMOUD\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-10.0.1.aar\\402a680017c93a64a4c3e8e02218c442\\res\\color\\common_google_signin_btn_text_dark.xml"
+        "merged": "C:\\Users\\MAHMOUD\\Documents\\GitHub\\GotTeam\\GotTeam\\GotTeam\\android\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_material_dark.xml",
+        "source": "C:\\Users\\MAHMOUD\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-23.0.1.aar\\698804caa128a4c490a6026f3e9c6852\\res\\color\\abc_primary_text_material_dark.xml"
     },
     {
         "merged": "C:\\Users\\MAHMOUD\\Documents\\GitHub\\GotTeam\\GotTeam\\android\\app\\build\\intermediates\\res\\merged\\debug\\color\\switch_thumb_material_dark.xml",
         "source": "C:\\Users\\MAHMOUD\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-23.0.1.aar\\b8e69cdcc08a516d4c9e190d690c7bc6\\res\\color\\switch_thumb_material_dark.xml"
     },
     {
-        "merged": "C:\\Users\\MAHMOUD\\Documents\\GitHub\\GotTeam\\GotTeam\\android\\app\\build\\intermediates\\res\\merged\\debug\\color\\switch_thumb_material_light.xml",
-        "source": "C:\\Users\\MAHMOUD\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-23.0.1.aar\\b8e69cdcc08a516d4c9e190d690c7bc6\\res\\color\\switch_thumb_material_light.xml"
-    },
-    {
         "merged": "F:\\Projects\\react-native\\GotTeam\\android\\app\\build\\intermediates\\res\\merged\\debug\\color\\switch_thumb_material_dark.xml",
         "source": "C:\\Users\\MAHMOUD\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-23.0.1.aar\\b8e69cdcc08a516d4c9e190d690c7bc6\\res\\color\\switch_thumb_material_dark.xml"
+    },
+    {
+        "merged": "C:\\Users\\MAHMOUD\\Documents\\GitHub\\GotTeam\\GotTeam\\GotTeam\\android\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_material_light.xml",
+        "source": "C:\\Users\\MAHMOUD\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-23.0.1.aar\\698804caa128a4c490a6026f3e9c6852\\res\\color\\abc_primary_text_material_light.xml"
     },
     {
         "merged": "F:\\Projects\\react-native\\GotTeam\\android\\app\\build\\intermediates\\res\\merged\\debug\\color\\switch_thumb_material_light.xml",
@@ -56,35 +108,27 @@
         "source": "C:\\Users\\MAHMOUD\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-23.0.1.aar\\b8e69cdcc08a516d4c9e190d690c7bc6\\res\\color\\abc_primary_text_disable_only_material_light.xml"
     },
     {
-        "merged": "F:\\Projects\\react-native\\GotTeam\\android\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_material_light.xml",
-        "source": "C:\\Users\\MAHMOUD\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-23.0.1.aar\\b8e69cdcc08a516d4c9e190d690c7bc6\\res\\color\\abc_primary_text_material_light.xml"
-    },
-    {
-        "merged": "C:\\Users\\MAHMOUD\\Documents\\GitHub\\GotTeam\\GotTeam\\android\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_secondary_text_material_light.xml",
-        "source": "C:\\Users\\MAHMOUD\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-23.0.1.aar\\b8e69cdcc08a516d4c9e190d690c7bc6\\res\\color\\abc_secondary_text_material_light.xml"
-    },
-    {
         "merged": "C:\\Users\\MAHMOUD\\Documents\\GitHub\\GotTeam\\GotTeam\\android\\app\\build\\intermediates\\res\\merged\\debug\\color\\common_google_signin_btn_text_light.xml",
         "source": "C:\\Users\\MAHMOUD\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-10.0.1.aar\\402a680017c93a64a4c3e8e02218c442\\res\\color\\common_google_signin_btn_text_light.xml"
+    },
+    {
+        "merged": "C:\\Users\\MAHMOUD\\Documents\\GitHub\\GotTeam\\GotTeam\\GotTeam\\android\\app\\build\\intermediates\\res\\merged\\debug\\color\\switch_thumb_material_dark.xml",
+        "source": "C:\\Users\\MAHMOUD\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-23.0.1.aar\\698804caa128a4c490a6026f3e9c6852\\res\\color\\switch_thumb_material_dark.xml"
     },
     {
         "merged": "C:\\Users\\MAHMOUD\\Documents\\GitHub\\GotTeam\\GotTeam\\android\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_secondary_text_material_dark.xml",
         "source": "C:\\Users\\MAHMOUD\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-23.0.1.aar\\b8e69cdcc08a516d4c9e190d690c7bc6\\res\\color\\abc_secondary_text_material_dark.xml"
     },
     {
-        "merged": "F:\\Projects\\react-native\\GotTeam\\android\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_secondary_text_material_light.xml",
-        "source": "C:\\Users\\MAHMOUD\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-23.0.1.aar\\b8e69cdcc08a516d4c9e190d690c7bc6\\res\\color\\abc_secondary_text_material_light.xml"
+        "merged": "C:\\Users\\MAHMOUD\\Documents\\GitHub\\GotTeam\\GotTeam\\GotTeam\\android\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_secondary_text_material_light.xml",
+        "source": "C:\\Users\\MAHMOUD\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-23.0.1.aar\\698804caa128a4c490a6026f3e9c6852\\res\\color\\abc_secondary_text_material_light.xml"
     },
     {
         "merged": "C:\\Users\\MAHMOUD\\Documents\\GitHub\\GotTeam\\GotTeam\\android\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_disable_only_material_light.xml",
         "source": "C:\\Users\\MAHMOUD\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-23.0.1.aar\\b8e69cdcc08a516d4c9e190d690c7bc6\\res\\color\\abc_primary_text_disable_only_material_light.xml"
     },
     {
-        "merged": "F:\\Projects\\react-native\\GotTeam\\android\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_secondary_text_material_dark.xml",
-        "source": "C:\\Users\\MAHMOUD\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-23.0.1.aar\\b8e69cdcc08a516d4c9e190d690c7bc6\\res\\color\\abc_secondary_text_material_dark.xml"
-    },
-    {
-        "merged": "C:\\Users\\MAHMOUD\\Documents\\GitHub\\GotTeam\\GotTeam\\android\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_material_light.xml",
-        "source": "C:\\Users\\MAHMOUD\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-23.0.1.aar\\b8e69cdcc08a516d4c9e190d690c7bc6\\res\\color\\abc_primary_text_material_light.xml"
+        "merged": "C:\\Users\\MAHMOUD\\Documents\\GitHub\\GotTeam\\GotTeam\\GotTeam\\android\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_disable_only_material_light.xml",
+        "source": "C:\\Users\\MAHMOUD\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-23.0.1.aar\\698804caa128a4c490a6026f3e9c6852\\res\\color\\abc_primary_text_disable_only_material_light.xml"
     }
 ]

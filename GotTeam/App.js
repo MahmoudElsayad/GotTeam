@@ -31,9 +31,48 @@ class AuthLoader extends React.Component {
     this._bootstrapAsync();
   }
 
+componentDidMount() {
+  this.checkPermission();
+}
+
+async checkPermission() {
+  const enabled = await firebase.messaging().hasPermission();
+  if (enabled) {
+      this.getToken();
+  } else {
+      this.requestPermission();
+  }
+}
+
+async getToken() {
+  let fcmToken = await AsyncStorage.getItem('fcmToken', value);
+  if (!fcmToken) {
+      fcmToken = await firebase.messaging().getToken();
+      if (fcmToken) {
+          // user has a device token
+          await AsyncStorage.setItem('fcmToken', fcmToken);
+      }
+  }
+}
+
+  async requestPermission() {
+    try {
+      await firebase.messaging().requestPermission();
+      // User has authorised
+      this.getToken();
+    } catch (error) {
+      // User has rejected permissions
+      console.log('permission rejected');
+    }
+  }
+
+
+
   componentWillUnmount() {
     ActionSheet.actionsheetInstance = null;
   }
+
+  
 
   // Fetch the token from storage then navigate to our appropriate place
   _bootstrapAsync = async () => {
