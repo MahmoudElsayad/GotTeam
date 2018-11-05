@@ -1,4 +1,0 @@
-#Sun Nov 04 20:17:36 EET 2018
-base.0=C\:\\Users\\MAHMOUD\\Documents\\GitHub\\GotTeam\\GotTeam\\GotTeam\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
-path.0=classes.dex
-renamed.0=classes.dex
