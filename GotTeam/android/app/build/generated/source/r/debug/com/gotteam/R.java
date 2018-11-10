@@ -3006,7 +3006,15 @@ containing a value of this type.
         public static final int common_open_on_phone=0x7f080022;
         public static final int common_signin_button_text=0x7f080023;
         public static final int common_signin_button_text_long=0x7f080024;
+        public static final int default_web_client_id=0x7f08004d;
         public static final int fcm_fallback_notification_channel_label=0x7f080025;
+        public static final int firebase_database_url=0x7f08004e;
+        public static final int gcm_defaultSenderId=0x7f08004f;
+        public static final int google_api_key=0x7f080050;
+        public static final int google_app_id=0x7f080051;
+        public static final int google_crash_reporting_api_key=0x7f080052;
+        public static final int google_storage_bucket=0x7f080053;
+        public static final int project_id=0x7f080054;
         public static final int search_menu_title=0x7f080026;
         public static final int status_bar_notification_info_overflow=0x7f080027;
     }

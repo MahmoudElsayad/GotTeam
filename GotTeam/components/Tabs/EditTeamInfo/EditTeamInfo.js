@@ -11,6 +11,8 @@ import { NavigationBar, Title, Image, TextInput, View, Row, Subtitle, Divider, C
 import Icon from 'react-native-vector-icons/FontAwesome';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import renderIf from '../../renderIf';
+import { BackHandler } from 'react-native';
+
 
 
 
@@ -39,6 +41,25 @@ export default class EditTeamInfo extends Component {
     static navigationOptions = {
         header: null
     };
+
+    componentDidMount() {
+        this.backHandler = BackHandler.addEventListener('hardwareBackPress', () => {
+            this.goBack(); // works best when the goBack is async
+            return true;
+        });
+    }
+
+    componentWillUnmount() {
+        this.backHandler.remove();
+    }
+
+    goBack = () => {
+        console.log('called');
+
+        this.props.navigation.dispatch(StackActions.pop({
+            n: 1,
+        }));
+    }
 
     componentDidMount() {
 

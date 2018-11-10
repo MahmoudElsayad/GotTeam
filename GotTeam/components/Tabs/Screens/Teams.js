@@ -11,13 +11,15 @@ import {
 import { NavigationBar, Title, Subtitle, View, Divider , Caption} from '@shoutem/ui';
 import Spinner from 'react-native-spinkit';
 import LinearGradient from 'react-native-linear-gradient';
-import { Content, ActionSheet, Root, Toast } from 'native-base';
+import { Content, Root, Toast } from 'native-base';
 import { List, ListItem, SearchBar } from "react-native-elements";
 import * as firebase from 'firebase';
 import 'firebase/firestore';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import renderIf from './../../renderIf';
 import PTRView from 'react-native-pull-to-refresh'
+import { ActionSheet, ActionSheetItem } from 'react-native-action-sheet-component';
+
 
 
 var BUTTONS = ['Create Team', 'Join Team', 'Cancel'];
@@ -33,6 +35,8 @@ class Teams extends Component {
             data: [],
             clicked: 0,
             _refresh: false,
+            selectedTeam: ['item1']
+
         }
     }
 
@@ -48,6 +52,36 @@ class Teams extends Component {
         this.fetchTeams(user);
 
     };
+
+
+    showInfoActionSheet = (key) => {
+        this.setState({ selectedTeam: key });
+        this.infoActionSheet.show();
+    }
+
+    showJoinActionSheet = () => {
+        this.joinActionSheet.show();
+    }
+
+    onChange = (value, index, values) => {
+        console.log(values);
+    }
+
+    onItemPress = (value) => {
+        if (value == 'create') {
+            this.props.navigation.navigate('AddTeams');
+        }
+        else if (value == 'join') {
+            this.props.navigation.navigate('JoinTeams');
+        }
+
+        if (value == 'delete') {
+            this.deleteTeam(this.state.selectedTeam);
+        }
+        else if (value == 'info') {
+            this.props.navigation.navigate('TeamInfo', { teamName: this.state.selectedTeam, teamCode: '######' })
+        }
+    }
 
     _Refresh = () => {
         this.setState({ refreshing: true });
@@ -120,6 +154,8 @@ class Teams extends Component {
         else if (index == 1) {
             this.props.navigation.navigate('JoinTeams');
         }
+
+        
     }
 
     deleteTeam = (key) => {
@@ -214,17 +250,7 @@ class Teams extends Component {
                         centerComponent={<Title style={{ fontSize: 20, paddingTop: 3, }}>Teams</Title>}
                         rightComponent={
                             <TouchableOpacity
-                                onPress={() =>
-                                    ActionSheet.show(
-                                        {
-                                            options: BUTTONS,
-                                            cancelButtonIndex: 2,
-                                            title: "Teams"
-                                        },
-                                        buttonIndex = (index) => {
-                                            this.actionButton(index);
-                                        }
-                                    )}
+                                onPress={this.showJoinActionSheet}
                             >
                                 <View style={{ marginRight: '15%', marginTop:'2%' }}>
                                     <Icon name="plus-circle" size={30} color="#fff" />
@@ -287,18 +313,9 @@ class Teams extends Component {
                                 data={this.state.data}
                                 keyExtractor={(item, index) => item.key}
                                 renderItem={({ item }) => (
-                                    <TouchableOpacity 
+                                    <TouchableOpacity
                                     onPress= {() => {
-                                        ActionSheet.show(
-                                            {
-                                                options: TeamsButtons,
-                                                cancelButtonIndex: 3,
-                                                title: "Testing ActionSheet"
-                                            },
-                                            buttonIndex = (index) => {
-                                                this.holdButton(index, item.name);
-                                            }
-                                            )
+                                        this.showInfoActionSheet(item.name)
                                         }}
                                         >
                                     <ListItem
@@ -319,6 +336,40 @@ class Teams extends Component {
                             </ScrollView>
                         </PTRView>
                 )}
+
+                <ActionSheet
+                    ref={(actionSheet) => { this.joinActionSheet = actionSheet; }}
+                    position="bottom"
+                    onChange={this.onChange}
+                >
+                    <ActionSheetItem
+                        text="Create Team"
+                        value="create"
+                        onPress={this.onItemPress}
+                    />
+                    <ActionSheetItem
+                        text="Join Team"
+                        value="join"
+                        onPress={this.onItemPress}
+                    />
+                </ActionSheet>
+
+                <ActionSheet
+                    ref={(actionSheet) => { this.infoActionSheet = actionSheet; }}
+                    position="bottom"
+                    onChange={this.onChange}
+                >
+                    <ActionSheetItem
+                        text="Delete Team"
+                        value="delete"
+                        onPress={this.onItemPress}
+                    />
+                    <ActionSheetItem
+                        text="Team Info"
+                        value="info"
+                        onPress={this.onItemPress}
+                    />
+                </ActionSheet>
 
             </Root>
         );
