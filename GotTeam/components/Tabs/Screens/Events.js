@@ -11,7 +11,7 @@ import renderIf from './../../renderIf';
 import { List, ListItem, SearchBar } from "react-native-elements";
 import PTRView from 'react-native-pull-to-refresh'
 import Icon from 'react-native-vector-icons/FontAwesome';
-import RadioForm, { RadioButton, RadioButtonInput, RadioButtonLabel } from 'react-native-simple-radio-button';
+import { RadioGroup, RadioButton } from 'react-native-flexi-radio-button'
 
 
 var radio_props = [
@@ -29,7 +29,8 @@ class Events extends Component {
         this.state = {
             loading: false,
             data: [],
-            _refresh: false
+            _refresh: false,
+            userID: ''
 
         }
     }
@@ -37,6 +38,9 @@ class Events extends Component {
     componentWillMount() {
         firebase.auth().onAuthStateChanged(user => {
             this.user = user;
+            this.setState({
+                userID: user.uid
+            });
             this.loader();
         });
         var user = firebase.auth().currentUser;
@@ -66,10 +70,25 @@ class Events extends Component {
 
     setTeams = (e, uid) => {
         this.teamsTemp = [];
-
+        this.newElement;
         for (let index = 0; index < e.length; index++) {
             const element = e[index];
-                    this.teamsTemp.push(element.data())
+            if (element.data().attendance) {
+                var attendance = element.data().attendance;
+                if (attendance.includes(this.state.userID)) {
+                    this.newElement = element.data();
+                    this.newElement.coming = 0;
+                }
+                else {
+                    this.newElement = element.data();
+                    this.newElement.coming = 1;
+                }
+            }
+            else {
+                this.newElement = element.data();
+                this.newElement.coming = 1;
+            }
+                    this.teamsTemp.push(this.newElement)
             }
 
         this.setState({
@@ -121,36 +140,32 @@ class Events extends Component {
     };
 
     updateAttendance = (value,eventName) => {
-        // var user = firebase.auth().currentUser;
         
-        // var temp = [
-        //     {userID: user.uid,
-        //     attendance:value}
-        // ]
-        //         firebase.firestore().collection('events').doc(eventName).get()
-        //         .then((e) => {
-        //             console.log(e.data());
-                    
-        //             if (e.data().attendance != undefined) {
-        //                 var temp = e.data().attendance.includes(user.uid)
-        //                 console.log(temp);
-                        
-        //             }
-
-        //             firebase.firestore().collection('events').doc(eventName).update({
-        //                 attendance: firebase.firestore.FieldValue.arrayUnion(temp)
-
-        //             })
-        //         }).then( () => {
-        //                 Toast.show({
-        //                     text: "Your attendance is updated",
-        //                     buttonText: "Okay",
-        //                     duration: 3000
-        //                 })
-        //         }).catch((error) => {
-        //             console.log(error);
-
-        //         })
+        firebase.firestore().collection('events').doc(eventName).get()
+        .then((data) => {
+            if (data.data().attendance) {
+                var attendance = data.data().attendance;
+                if (attendance.includes(this.state.userID) && value == 1 ) {
+                    firebase.firestore().collection('events').doc(eventName)
+                        .update({
+                            attendance: firebase.firestore.FieldValue.arrayRemove(this.state.userID)
+                        });
+                }
+                if (value == 0 && attendance.includes(this.state.userID) == false) {
+                    firebase.firestore().collection('events').doc(eventName)
+                        .update({
+                            attendance: firebase.firestore.FieldValue.arrayUnion(this.state.userID)
+                        });
+                }   
+            }
+            else {
+                firebase.firestore().collection('events').doc(eventName)
+                .update({
+                    attendance: firebase.firestore.FieldValue.arrayUnion(this.state.userID)
+                });
+            }
+            
+        })
         
     }
 
@@ -234,19 +249,24 @@ class Events extends Component {
                                                     <Text style={{ marginLeft:'3%' }} numberOfLines={1}>{item.type}</Text>
                                                     <Text style={{ marginLeft:'3%' }} numberOfLines={1}>{item.eventName}</Text>
                                                     <Text style={{ marginLeft:'3%' }} numberOfLines={1}>{item.manualLocation || (item.region.latitude + ' -- ' + item.region.longitude )}</Text>
-                                                    <RadioForm
-                                                        radio_props={radio_props}
-                                                        initial={0}
-                                                        onPress={(value) => { this.updateAttendance(value,item.eventName) }}
-                                                        formHorizontal={true}
-                                                        labelHorizontal={true}
-                                                        buttonColor={'#000'}
-                                                        animation={true}
-                                                        selectedButtonColor={'#19CFA0'}
-                                                        style={{padding:'2%'}}
-                                                    />
+
                                                 </View>
-                                                <Icon style={{ marginRight:'5%' }} name="ellipsis-v" size={25} color="#313131" />
+                                                <RadioGroup
+                                                    onSelect={(value) => this.updateAttendance(value,item.eventName)}
+                                                    activeColor={'#19CFA0'}
+                                                    selectedIndex={item.coming}
+                                                    color={'#000'}
+                                                    style={{marginRight:'3%'}}
+                                                >
+                                                    <RadioButton value={'yes'} >
+                                                        <Text>Going</Text>
+                                                    </RadioButton>
+
+                                                    <RadioButton value={'no'}>
+                                                        <Text>Not Going</Text>
+                                                    </RadioButton>
+                                                </RadioGroup>
+                                                {/* <Icon style={{ marginRight:'5%' }} name="ellipsis-v" size={25} color="#313131" /> */}
                                             </Row>
                                         </TouchableOpacity >
                                     )}
@@ -305,6 +325,9 @@ const styles = {
         height: '100%',
         backgroundColor: '#fff'
     },
+    radioButtonWrap: {
+        marginRight: 5
+    }
 };
 
 
