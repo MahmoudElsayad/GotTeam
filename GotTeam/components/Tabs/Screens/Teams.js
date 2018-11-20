@@ -304,8 +304,8 @@ class Teams extends Component {
                             style={styles.contentContainer}
                             onRefresh={this._Refresh}
                         >
-                            <Divider styleName="section-header" style={{height:'6%', paddingTop:'-1%'}}>
-                                <Text style={{padding:'2%'}}>Your Teams</Text>
+                            <Divider styleName="section-header">
+                                <Text style={{marginLeft:'2%', marginBottom:'2%'}}>Your Teams</Text>
                             </Divider>
                         <ScrollView>
                         <List containerStyle={{ marginTop: '-1%',borderTopWidth: 0, borderBottomWidth: 0, height:'100%' }}>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, TouchableOpacity, ScrollView, FlatList } from 'react-native';
+import { StyleSheet, TouchableOpacity, ScrollView, FlatList, ActivityIndicator } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { Card, CardItem, Body, Toast } from "native-base";
 import { NavigationBar, Title, Image, View, Row, Text, Subtitle, Divider, Caption, Button } from '@shoutem/ui';
@@ -24,7 +24,8 @@ class Message extends Component {
             _refresh: false,
             userID: '',
             teamName: JSON.stringify(this.props.navigation.getParam('teamName').replace(/['"]+/g, '')),
-            deleteId:0
+            deleteId:0,
+            deleteLoading: false
 
         }
 
@@ -44,7 +45,7 @@ class Message extends Component {
             this.loader();
         });
 
-        this.getMessage(this.state.teamName);
+        this.getMessage();
 
     };
 
@@ -70,8 +71,7 @@ class Message extends Component {
     }
 
 
-    getMessage = (teamName) => {
-        console.log(teamName);
+    getMessage = () => {
         
         firebase.firestore().collection("messages")
         .orderBy("time", "desc")
@@ -102,13 +102,11 @@ class Message extends Component {
     }
  
     deleteMessage = () => {
-        this.setState({
-            loading: true
-        });
+        
         var user = firebase.auth().currentUser;        
         firebase.firestore().collection('messages').doc(this.state.deleteId)
         .get()
-        .then((e) => {
+        .then(function (e) {
             console.log(e.data());
             if (e.data().userID == user.uid) {
                 firebase.firestore().collection("messages").doc(this.state.deleteId).delete().then(function () {
@@ -120,11 +118,11 @@ class Message extends Component {
             else{
                 alert("You don't have permission to delete this message.")
             }
-        }).catch((error) => {
+            this.getMessage();
+            this.setState({ deleteLoading: false });
+            }.bind(this)).catch((error) => {
             console.log(error);
         })
-        this._Refresh();       
-        this.setState({ loading: false });
     }
 
 
@@ -147,15 +145,12 @@ class Message extends Component {
     showDeleteActionSheet = (id) => {
         
         this.setState({
+            deleteLoading: true,
             deleteId: id
         })
         this.deleteActionSheet.show();
     }
 
-    onChange = (value, index, values) => {
-        console.log(values);
-        this.setState({ selectedItems: values });
-    }
 
     renderFooter = () => {
         if (!this.state.loading) return null;
@@ -281,11 +276,16 @@ class Message extends Component {
                                                             { item.seen ? item.seen.length : 0 }
                                                         </Text>
                                                     </View>
-                                                    <TouchableOpacity
-                                                        onPress={() => this.showDeleteActionSheet(item.id)}
-                                                    >
-                                                        <Icon  name="trash-o" size={22} color="#000" />
-                                                    </TouchableOpacity>
+                                                    {renderIf(this.state.deleteLoading,
+                                                        <ActivityIndicator style={{ margin: 0 }} color='#19CFA0' size={40} />
+                                                    )}
+                                                    {renderIf(this.state.deleteLoading == false,
+                                                        <TouchableOpacity
+                                                            onPress={() => this.showDeleteActionSheet(item.id)}
+                                                        >
+                                                            <Icon name="trash-o" size={22} color="#000" />
+                                                        </TouchableOpacity>
+                                                    )}
                                                 </Row>
                                             </CardItem>
                                         </Card>
