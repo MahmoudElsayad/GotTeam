@@ -29,6 +29,7 @@ class Events extends Component {
         this.state = {
             loading: false,
             data: [],
+            teams:[],
             _refresh: false,
             userID: ''
 
@@ -45,6 +46,7 @@ class Events extends Component {
         });
         var user = firebase.auth().currentUser;
 
+        this.fetchTeams(user);
         this.fetchEvents(user);
 
     };
@@ -54,12 +56,66 @@ class Events extends Component {
         firebase.firestore().collection("events")
             .get()
             .then((e) => {
-                this.setTeams(e.docs);
+                this.setEvents(e.docs);
             })
             .catch(function (error) {
                 console.log("Error getting documents: ", error);
             });
     }
+
+    fetchTeams = (user) => {
+        this.id = user.uid;
+        firebase.firestore().collection("teams")
+            .get()
+            .then((e) => {
+                this.setTeams(e.docs, this.id);
+            })
+            .catch(function (error) {
+                console.log("Error getting documents: ", error);
+            });
+    }
+
+    setTeams = (e, uid) => {
+        this.loader();
+        this.teamsTemp = [];
+
+        for (let index = 0; index < e.length; index++) {
+            const element = e[index];
+
+            if (element.data().players != undefined) {
+                if (element.data().players.includes(uid) == true) {
+                    this.teamsTemp.push(element.data().info.name);
+                    continue;
+                }
+            }
+            if (element.data().parents != undefined) {
+                if (element.data().parents.includes(uid) == true) {
+                    this.teamsTemp.push(element.data().info.name);
+                    continue;
+                }
+            }
+            if (element.data().coaches != undefined) {
+                if (element.data().coaches.includes(uid) == true) {
+                    this.teamsTemp.push(element.data().info.name);
+                    continue;
+                }
+            }
+            else {
+                if (element.data().info.adminID == uid) {
+                    this.teamsTemp.push(element.data().info.name);
+                }
+            }
+
+        }
+        this.setState({
+            teams: this.teamsTemp
+        });
+        console.log(this.teamsTemp);
+        
+        this.setState({ loading: false });
+    }
+
+
 
     _Refresh = () => {
         this.setState({ refreshing: true });
@@ -68,33 +124,51 @@ class Events extends Component {
 
     }
 
-    setTeams = (e, uid) => {
-        this.teamsTemp = [];
+    inTeam = (teamName, uid) => {
+        if (this.state.teams.includes(teamName)) {
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    setEvents = (e, uid) => {
+        this.eventsTemp = [];
         this.newElement;
         for (let index = 0; index < e.length; index++) {
             const element = e[index];
-            if (element.data().attendance) {
-                var attendance = element.data().attendance;
-                if (attendance.includes(this.state.userID)) {
-                    this.newElement = element.data();
-                    this.newElement.coming = 0;
-                }
-                else {
-                    this.newElement = element.data();
-                    this.newElement.coming = 1;
-                }
-            }
-            else {
-                this.newElement = element.data();
-                this.newElement.coming = 1;
-            }
-                    this.teamsTemp.push(this.newElement)
-            }
+            console.log(element.data().teams);
 
+            for (let i = 0; i < element.data().teams.length; i++) {
+                const team = element.data().teams[i];
+                if (this.inTeam(team, uid)) {
+                    if (element.data().attendance) {
+                        var attendance = element.data().attendance;
+                        if (attendance.includes(this.state.userID)) {
+                            this.newElement = element.data();
+                            this.newElement.coming = 0;
+                        }
+                        else {
+                            this.newElement = element.data();
+                            this.newElement.coming = 1;
+                        }
+                    }
+                    else {
+                        this.newElement = element.data();
+                        this.newElement.coming = 1;
+                    }
+                    this.eventsTemp.push(this.newElement)
+                    break;
+                }
+            }
+            }
         this.setState({
-            data: this.teamsTemp
+            data: this.eventsTemp
         });
         this.setState({ loading: false });
+        console.log(this.eventsTemp);
+        
     }
 
     loader = () => {
@@ -321,7 +395,6 @@ const styles = {
         marginBottom: 50
     },
     contentContainer: {
-        marginTop: '-3%',
         height: '100%',
         backgroundColor: '#fff'
     },

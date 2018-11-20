@@ -121,6 +121,26 @@ export default class TeamOptions extends Component {
                 console.log("Error getting documents: ", error);
             });
     }
+
+    sendTeamMessage = () => {
+        var user = firebase.auth().currentUser;
+
+        var name = JSON.stringify(this.props.navigation.getParam('teamName')).replace(/['"]+/g, '');
+    
+        firebase.firestore().collection("teams").where('info.name', '==', name)
+            .get()
+            .then((e) => {
+                if (e.docs[0].data().info.adminID == user.uid) {
+                    this.props.navigation.navigate('TeamMessage', { teamName: JSON.stringify(this.props.navigation.getParam('teamName')).replace(/['"]+/g, '')})
+                }
+                else{
+                    alert('You are not an admin or a team owner to send a Team Message.');
+                }
+            })
+            .catch(function (error) {
+                console.log("Error getting documents: ", error);
+            });
+    }
     
 
     render() {
@@ -168,7 +188,7 @@ export default class TeamOptions extends Component {
                                     <Text>Send Invitations</Text>
                                 </ListItem>
                                 <ListItem>
-                                    <TouchableOpacity onPress={() => this.props.navigation.navigate('TeamMessage')}>
+                                    <TouchableOpacity onPress={() => this.sendTeamMessage()}>
                                         <Text>Create Team Message</Text>
                                     </TouchableOpacity>
                                 </ListItem>

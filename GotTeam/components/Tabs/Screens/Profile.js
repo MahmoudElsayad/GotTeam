@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { StyleSheet, TouchableOpacity, Image } from 'react-native';
-import { NavigationBar, Title, Switch, TextInput, View, Row, Subtitle, Divider, Caption} from '@shoutem/ui';
+import { StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+import { NavigationBar, Title, Image, TextInput, View, Row, Subtitle, Divider, Caption} from '@shoutem/ui';
 import Spinner from 'react-native-spinkit';
 import { Button, Text, ActionSheet } from 'native-base';
 import LinearGradient from 'react-native-linear-gradient';
@@ -119,21 +119,148 @@ class Profile extends Component {
                     )}
 
                     
+                    <View styleName="fill-parent" style={{ marginTop: '15%', backgroundColor: '#fff' }}>
+
                     {renderIf(this.state.loading == false,
-                        
-                    <View style={styles.container}>
+                    <View styleName="vertical h-start">
+                    <ScrollView style={{ paddingTop: '3%', height:'106%', width:'100%' }}>
+                    <Row style={{width:'100%' , flexDirection: 'column'}}>
                         <Image
-                            style={{ width: 100, height: 100, borderRadius:50}}
+                            style={{ width: 80, height: 80, borderRadius:50}}
                             source={{ uri: 'http://via.placeholder.com/640x360' }}
                             />
-
                         <Text style={styles.text}>{this.state.name}</Text>
-                        <Text style={styles.text}>{this.state.type}</Text>
-                        <Text style={styles.text}>{this.state.mobile}</Text>
                         <Text style={styles.text}>{this.state.email}</Text>
+                    </Row>
+                    
+                    <Row styleName="small">
+                        <Icon name="question" size={25} style={styles.iconLeft}/>
+                        <Text>Help</Text>
+                        {/* <Icon name="angle-right" size={25} style={styles.iconRight}/> */}
+                    </Row>
+                    <Row styleName="small">
+                                <Icon name="usd" size={25} style={styles.iconLeft}/>
+                        <Text>My Subscribtion</Text>
+                        {/* <Icon name="angle-right" size={25} style={styles.iconRight}/> */}
+                    </Row>
+                    <Row styleName="small">
+                                <Icon name="usd" size={25} style={styles.iconLeft}/>
+                        <Text>Payment Settings</Text>
+                        {/* <Icon name="angle-right" size={25} style={styles.iconRight}/> */}
+                    </Row>
+                    <Row styleName="small">
+                                <Icon name="bell-o" size={25} style={styles.iconLeft}/>
+                        <Text>Recent Notifications</Text>
+                        {/* <Icon name="angle-right" size={25} style={styles.iconRight}/> */}
+                    </Row>
+                    <Row styleName="small">
+                        <Icon name="volume-up" size={25} style={styles.iconLeft}/>
+                        <Text>Notification Sound</Text>
+                        {/* <Icon name="angle-right" size={25} style={styles.iconRight}/> */}
+                    </Row>
+
+
+                            <Divider styleName="section-header">
+                            </Divider>
+
+
+                            <Row styleName="small">
+                                <Icon name="recycle" size={25} style={styles.iconLeft} />
+                                <Text>Check for Updates</Text>
+                                {/* <Icon name="angle-right" size={25} style={styles.iconRight} /> */}
+                            </Row><Row styleName="small">
+                                <Icon name="exclamation-circle" size={25} style={styles.iconLeft} />
+                                <Text>Version History</Text>
+                                {/* <Icon name="angle-right" size={25} style={styles.iconRight} /> */}
+                            </Row><Row styleName="small">
+                                <Icon name="heartbeat" size={25} style={styles.iconLeft} />
+                                <Text>Lova GotTeam?</Text>
+                                {/* <Icon name="angle-right" size={25} style={styles.iconRight} /> */}
+                            </Row><Row styleName="small">
+                                <Icon name="share-square-o" size={25} style={styles.iconLeft} />
+                                <Text>Share GotTeam with friends</Text>
+                                {/* <Icon name="angle-right" size={25} style={styles.iconRight} /> */}
+                            </Row>
+
+
+                            <Divider styleName="section-header">
+                            </Divider>
+
+
+                            <Row styleName="small">
+                                <Icon name="tags" size={25} style={styles.iconLeft} />
+                                <Text>My Offers</Text>
+                                {/* <Icon name="angle-right" size={25} style={styles.iconRight} /> */}
+                            </Row><Row styleName="small">
+                                <Icon name="tags" size={25} style={styles.iconLeft} />
+                                <Text>Local Sponsors</Text>
+                                {/* <Icon name="angle-right" size={25} style={styles.iconRight} /> */}
+                            </Row><Row styleName="small">
+                                <Icon name="tags" size={25} style={styles.iconLeft} />
+                                <Text>Past Winners</Text>
+                                {/* <Icon name="angle-right" size={25} style={styles.iconRight} /> */}
+                            </Row>
+
+                            <Divider styleName="section-header">
+                            </Divider>
+
+
+                            <Row styleName="small">
+                                <Icon name="audio-description" size={25} style={styles.iconLeft} />
+                                <Text>Banner Ads</Text>
+                                {/* <Icon name="angle-right" size={25} style={styles.iconRight} /> */}
+                            </Row><Row styleName="small">
+                                <Icon name="audio-description" size={25} style={styles.iconLeft} />
+                                <Text>Full Screen Ads</Text>
+                                {/* <Icon name="angle-right" size={25} style={styles.iconRight} /> */}
+                            </Row><Row styleName="small">
+                                <Icon name="audio-description" size={25} style={styles.iconLeft} />
+                                <Text>Sponsors Listings</Text>
+                                {/* <Icon name="angle-right" size={25} style={styles.iconRight} /> */}
+                            </Row><Row styleName="small">
+                                <Icon name="audio-description" size={25} style={styles.iconLeft} />
+                                <Text>Email Ads</Text>
+                                {/* <Icon name="angle-right" size={25} style={styles.iconRight} /> */}
+                            </Row>
+
+                            <Divider styleName="section-header">
+                            </Divider>
+
+                            <Row styleName="small">
+                                <Icon name="envelope-o" size={25} style={styles.iconLeft} />
+                                <Text>Contact Us</Text>
+                                {/* <Icon name="angle-right" size={25} style={styles.iconRight} /> */}
+                            </Row><Row styleName="small">
+                                <Icon name="question-circle-o" size={25} style={styles.iconLeft} />
+                                <Text>FAQ's</Text>
+                                {/* <Icon name="angle-right" size={25} style={styles.iconRight} /> */}
+                            </Row><Row styleName="small">
+                                <Icon name="handshake-o" size={25} style={styles.iconLeft} />
+                                <Text>Terms & Conditions</Text>
+                                {/* <Icon name="angle-right" size={25} style={styles.iconRight} /> */}
+                            </Row><Row styleName="small">
+                                <Icon name="shield" size={25} style={styles.iconLeft} />
+                                <Text>Privacy Policy</Text>
+                                {/* <Icon name="angle-right" size={25} style={styles.iconRight} /> */}
+                            </Row>
+
+                            <Divider styleName="section-header">
+                            </Divider>
+
+                                <TouchableOpacity onPress={() => {
+                                    this._signOutUser()
+                                }}>
+                            <Row styleName="small">
+                                <Icon name="sign-out" size={25} style={styles.iconLeft} />
+                                <Text style={{color:'red'}}>Logout</Text>
+                                {/* <Icon name="angle-right" size={25} style={styles.iconRight} /> */}
+                            </Row>
+                                </TouchableOpacity>
+                
+                </ScrollView>
                     </View>
                             )}
-
+                    </View>
             </View>
         );
     }
@@ -145,7 +272,7 @@ const styles = {
         backgroundColor: '#fff',
         flexDirection: 'column',
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'flex-start',
         alignContent: 'center',
         marginTop:'25%'
     },
@@ -164,6 +291,12 @@ const styles = {
     linearGradient: {
         width: '100%',
         height: 72
+    },
+    iconLeft: {
+        marginRight:'5%',
+        marginLeft:'2%'
+    },
+    iconRight: {
     }
     
 };

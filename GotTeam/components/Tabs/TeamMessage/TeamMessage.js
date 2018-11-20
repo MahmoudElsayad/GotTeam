@@ -2,13 +2,17 @@ import React, { Component } from 'react';
 import { TouchableHighlight, TouchableOpacity, FlatList, ScrollView } from 'react-native';
 import * as firebase from 'firebase';
 import 'firebase/firestore';
+import Spinner from 'react-native-spinkit';
 import { Picker, Container, Body, Form, Root, Item, Label, Input, Textarea, Content, ListItem, CheckBox, Text } from 'native-base';
 import { StackActions } from 'react-navigation';
 import LinearGradient from 'react-native-linear-gradient';
 import { SearchBar } from "react-native-elements";
 import { NavigationBar, Title, Switch, TextInput, View, Row, Subtitle, Divider, Caption, Button } from '@shoutem/ui';
+import renderIf from './../../renderIf';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import DateTimePicker from 'react-native-modal-datetime-picker';
+import moment from 'moment';
+
 
 
 
@@ -19,7 +23,7 @@ export default class TeamMessage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            teamName: '',
+            teamName: this.props.teamName,
             data: [],
             message: '',
             recipients: [],
@@ -34,10 +38,7 @@ export default class TeamMessage extends Component {
             isTimePickerVisible: false,
             selectedDate: '01/01/2018',
             selectedTime: '11:00 AM',
-            messageBoxStyles: {
-                backgroundColor:'#fff',
-                color:'#000'
-            }
+            createLoading: false
         };
         this.arrayholder = [];
     }
@@ -115,26 +116,36 @@ export default class TeamMessage extends Component {
     }
 
     sendMessage = () => {
-        
-    }
-
-    onFocus = () => {
-        
         this.setState({
-            messageBoxStyles: {
-                backgroundColor: '#19CFA0',
-                color: '#fff'
-            }
+            createLoading: true
         })
-    }
-
-    onBlur = () => {
-        this.setState({
-            messageBoxStyles: {
-                backgroundColor: '#fff',
-                color: '#000'
-            }
+        var user = firebase.auth().currentUser;
+        
+        firebase.firestore().collection("messages").add({
+            teamName: JSON.stringify(this.props.navigation.getParam('teamName')).replace(/['"]+/g, ''),
+            message: this.state.message,
+            urgent: this.state.urgent,
+            members: this.state.members,
+            followers: this.state.followers,
+            subject: this.state.subject,
+            sendOnDate: this.state.sendOnDate,
+            userID: user.uid,
+            time: moment().format('llll')
         })
+            .then((ref) => {
+                firebase.firestore().collection("messages").doc(ref.id).
+                    update({
+                        id: ref.id
+                    })
+                console.log('Added document with ID: ', ref.id);
+                this.props.navigation.dispatch(StackActions.pop({
+                    n: 3,
+                }))
+            })
+            .catch((error)=> {
+                console.error("Error writing document: ", error);
+            });
+        
     }
 
     renderSeparator = () => {
@@ -156,7 +167,7 @@ export default class TeamMessage extends Component {
         });
         return (
             <Root>
-
+            
                 <View styleName="fill-parent">
                     <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={['#0BC5B7', '#29D890']} style={styles.linearGradient}>
                     <NavigationBar
@@ -175,13 +186,27 @@ export default class TeamMessage extends Component {
                         centerComponent={<Title style={{ fontSize: 18, paddingTop: 3, width: '140%' }}>Send Team Message</Title>}
                         rightComponent={
                             <TouchableOpacity style={{ marginRight: '15%' }} onPress={() => 
-                            this.props.navigation.dispatch(popAction)}>
+                            this.sendMessage()}>
                                 <Icon name='paper-plane' size={20} color='#fff' />
                             </TouchableOpacity>
                         }
                         />
                         </LinearGradient>
 
+                    {renderIf(this.state.createLoading,
+                        // <PulseIndicator style={{ margin: 0 }} color='#000' size={100} />
+                        <Spinner style={{
+                            flex: 1,
+                            justifyContent: 'center',
+                            alignContent: 'center',
+                            alignItems: 'center',
+                            alignSelf: 'center',
+                            marginBottom: 50
+                        }} size={40} type={'9CubeGrid'} color={'#19CFA0'} />
+                    )}
+
+
+                    {renderIf((this.state.createLoading == false),
                     <View styleName="fill-parent" style={{ marginTop: '15%' }}>
                         <View styleName="vertical h-start">
                     <ScrollView style={{marginTop:'1%', width:'100%', height:'110%'}}>
@@ -245,6 +270,7 @@ export default class TeamMessage extends Component {
                                             <Label>Subject</Label>
                                             <Input 
                                             placeholder={"Message's Subject"}
+                                                    onChangeText={(subject) => this.setState({ subject })}
                                             />
                                         </Item>
                                     </Form>
@@ -255,10 +281,9 @@ export default class TeamMessage extends Component {
                                 <Content>
                                     <Form>
                                             <Label style={{marginBottom:'1%'}}>Message</Label>
-                                            <Textarea style={{ backgroundColor:this.state.messageBoxStyles.backgroundColor, color:this.state.messageBoxStyles.color}} rowSpan={5} 
-                                                onBlur={() => this.onBlur()}
-                                                onFocus={() => this.onFocus()}
+                                            <Textarea rowSpan={5} 
                                                 underlineColorAndroid="transparent"
+                                                onChangeText={(message) => this.setState({ message })}
                                                 bordered placeholder="message ..." />
                                     </Form>
                                 </Content>
@@ -332,6 +357,9 @@ export default class TeamMessage extends Component {
                 </ScrollView>
                         </View>
                     </View>
+                )}
+
+
                 </View>
             </Root>
 

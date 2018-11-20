@@ -26,6 +26,7 @@ import Notifications from './components/Tabs/Notifications/Notifications';
 import CreateEvent from './components/Tabs/CreateEvent/CreateEvent';
 import CalendarScreen from './components/Tabs/CalendarScreen/CalendarScreen';
 import EventCreated from './components/Tabs/EventCreated/EventCreated';
+import Message from './components/Tabs/Message/Message';
 
 
 class AuthLoader extends React.Component {
@@ -36,7 +37,7 @@ class AuthLoader extends React.Component {
   }
   
   componentWillMount() {
-    YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTImageLoader','Method', 'Setting', 'Warning']);
+    YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTImageLoader','Method', 'Setting', 'Warning','Remote']);
   }  
 
   async componentDidMount() {
@@ -160,7 +161,8 @@ const TeamsTab = createStackNavigator({
   Notifications: { screen: Notifications },
   CreateEvent: { screen: CreateEvent },
   CalendarScreen: { screen: CalendarScreen },
-  EventCreated: { screen: EventCreated }
+  EventCreated: { screen: EventCreated },
+  Message: { screen: Message },
 },
 );
 

@@ -20,6 +20,7 @@ export default class CalendarScreen extends Component {
         super(props);
         this.state = {
             user: Object,
+            selected: ''
         };
 
         console.log(props);
@@ -30,6 +31,12 @@ export default class CalendarScreen extends Component {
         header: null
     };
 
+    onDayPress = (day) => {
+        this.setState({
+            selected: day.dateString
+        });
+    }
+
     componentWillMount() {
         firebase.auth().onAuthStateChanged(user => {
             this.setState({ user: user });
@@ -37,13 +44,14 @@ export default class CalendarScreen extends Component {
         });
     };
 
+
     render() {
         const popAction = StackActions.pop({
             n: 1,
         });
         const uri = 'https://images.unsplash.com/photo-1537351967534-3e91fc90121d?ixlib=rb-0.3.5&s=1fcdb0c9a4cebb0f7cdfb4e099e7a4c6&auto=format&fit=crop&w=400&q=80';
         return (
-            <View styleName="fill-parent">
+            <View styleName="fill-parent" style={{ backgroundColor:'white' }} >
                 <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={['#0BC5B7', '#29D890']} style={styles.linearGradient}>
             <NavigationBar
             styleName='clear'
@@ -74,21 +82,16 @@ export default class CalendarScreen extends Component {
                         <View styleName="fill-parent" style={{ marginTop: '15%' }}>
                             <View styleName="vertical h-start">
                                 <ScrollView style={{ marginTop: '1%', width: '100%', height: '110%' }}>
-
                             <Calendar
-                                current={'2018-11-16'}
-                                pastScrollRange={24}
-                                futureScrollRange={24}
-                                horizontal
-                                pagingEnabled
-                                hideExtraDays={true}
+                                style={styles.calendar}
+                                onDayPress={(day) => this.onDayPress(day)}
+                                hideExtraDays
+                                current={'2018-11-13'}
                                 markedDates={{
-                                    '2018-11-16': { selected: true, marked: true, selectedColor: 'blue' },
-                                    '2018-11-17': { marked: true },
-                                    '2018-11-18': { marked: true, dotColor: 'red', activeOpacity: 0 },
-                                    '2018-11-19': { disabled: true, disableTouchEvent: true }
+                                    '2018-11-14': { dots: [{ key: 'vacation', color: 'blue', selectedDotColor: 'white' }, { key: 'massage', color: 'red', selectedDotColor: 'white' }], selected: true },
+                                    '2018-11-13': { dots: [{ key: 'vacation', color: 'blue', selectedDotColor: 'red' }, { key: 'massage', color: 'red', selectedDotColor: 'blue' }], disabled: true }
                                 }}
-                                style={{ borderBottomWidth: 1, borderBottomColor: 'black' }}
+                                hideArrows={false}
                             />
                             </ScrollView>
                             </View>
@@ -105,5 +108,12 @@ const styles = {
     linearGradient: {
         width: '100%',
         height: 85
+    },
+    calendar: {
+        borderTopWidth: 1,
+        paddingTop: 5,
+        borderBottomWidth: 1,
+        borderColor: '#eee',
+        height: 350
     }
 };
