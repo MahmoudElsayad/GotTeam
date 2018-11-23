@@ -47,6 +47,7 @@ class Events extends Component {
         var user = firebase.auth().currentUser;
         this.fetchTeams(user);
         this.fetchMessages(user);
+        this.setState({ loading: false });
 
     };
 
@@ -160,7 +161,6 @@ class Events extends Component {
         this.setState({
             data: this.messagesTemp
         });
-        this.setState({ loading: false });
     }
 
     loader = () => {
